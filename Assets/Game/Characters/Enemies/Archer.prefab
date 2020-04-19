@@ -343,6 +343,11 @@ PrefabInstance:
       propertyPath: _chaseDistance
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1800166335303051033, guid: 20e499dac0ba5e5448b93da515c95ec1,
+        type: 3}
+      propertyPath: _characterClass
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20e499dac0ba5e5448b93da515c95ec1, type: 3}
 --- !u!4 &646652290346175496 stripped

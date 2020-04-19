@@ -14,7 +14,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.76, z: 0}
---- !u!114 &6092320045666943658
+--- !u!114 &4806096920693998317
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23,9 +23,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5992033498290494388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b61fe0ece04f4b4eb128c84b25abf85, type: 3}
+  m_Script: {fileID: 11500000, guid: 19f84e7a6d2ce4f4fa78a3fe53bd530c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startingLevel: 1
+  _characterClass: 0
 --- !u!1001 &4787437551134608853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -909,6 +911,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1978505967, guid: d449e560f69f35042a73bc3a5b97ee97, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6664227135163570569, guid: d449e560f69f35042a73bc3a5b97ee97,
+        type: 3}
+      propertyPath: _characterClass
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
