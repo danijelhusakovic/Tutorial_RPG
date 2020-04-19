@@ -788,16 +788,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 505037296777153486, guid: d449e560f69f35042a73bc3a5b97ee97,
-        type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 505037296777153486, guid: d449e560f69f35042a73bc3a5b97ee97,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 505037296777153490, guid: d449e560f69f35042a73bc3a5b97ee97,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -853,6 +843,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 505037296777153486, guid: d449e560f69f35042a73bc3a5b97ee97,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 505037296777153486, guid: d449e560f69f35042a73bc3a5b97ee97,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5100718663288458851, guid: d449e560f69f35042a73bc3a5b97ee97,
         type: 3}
       propertyPath: _weaponDamage
@@ -897,11 +897,6 @@ PrefabInstance:
       propertyPath: _leftHandTransform
       value: 
       objectReference: {fileID: 4787437551134221369}
-    - target: {fileID: 5972118491542296191, guid: d449e560f69f35042a73bc3a5b97ee97,
-        type: 3}
-      propertyPath: uniqueIdentifier
-      value: player
-      objectReference: {fileID: 0}
     - target: {fileID: 6783359638715887062, guid: d449e560f69f35042a73bc3a5b97ee97,
         type: 3}
       propertyPath: _healthPoints
@@ -909,6 +904,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1978505967, guid: d449e560f69f35042a73bc3a5b97ee97, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972118491542296191, guid: d449e560f69f35042a73bc3a5b97ee97,
+        type: 3}
+      propertyPath: uniqueIdentifier
+      value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3513026468416307657, guid: d449e560f69f35042a73bc3a5b97ee97,
+        type: 3}
+      propertyPath: _characterClass
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
