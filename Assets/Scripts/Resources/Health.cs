@@ -27,6 +27,11 @@ namespace RPG.Resources
             CheckIfDead();
         }
 
+        public float GetPercentage()
+        {
+            return 100f * _healthPoints / GetComponent<BaseStats>().GetHealth();
+        }
+
         private void CheckIfDead()
         {
             if (_healthPoints == 0)

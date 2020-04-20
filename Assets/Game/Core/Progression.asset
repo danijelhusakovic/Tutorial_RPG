@@ -25,3 +25,6 @@ MonoBehaviour:
     - 40
   - CharacterClass: 2
     Health: []
+  - CharacterClass: 3
+    Health:
+    - 30
