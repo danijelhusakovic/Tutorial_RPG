@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace RPG.Stats
@@ -8,13 +9,36 @@ namespace RPG.Stats
         [SerializeField] private int _startingLevel = 1;
         [SerializeField] private CharacterClass _characterClass;
         [SerializeField] private Progression _progression = null;
+        [SerializeField] private GameObject _levelUpParticelEffect = null;
 
-        private void Update() 
+        public event Action OnLevelUp;
+
+        private int _currentLevel = 0;
+
+        private void Start() 
         {
-            if(gameObject.tag.Equals("Player"))
+            _currentLevel = CalculateLevel();
+            Experience experience = GetComponent<Experience>();
+            if(experience != null)
             {
-                print(GetLevel());
+                experience.OnExperienceGained += UpdateLevel;
             }
+        }
+
+        private void UpdateLevel() 
+        {
+            int newLevel = CalculateLevel();
+            if(newLevel > _currentLevel)
+            {
+                _currentLevel = newLevel;
+                LevelUpEffect();
+                OnLevelUp();
+            }
+        }
+
+        private void LevelUpEffect()
+        {
+            Instantiate(_levelUpParticelEffect, transform);
         }
 
         public float GetStat(Stat stat)
@@ -22,14 +46,17 @@ namespace RPG.Stats
             return _progression.GetStat(stat, _characterClass, GetLevel());
         }
 
-        public float GetExperienceReward()
-        {
-            return 10f;
-        }
-
         public int GetLevel()
         {
-            
+            if(_currentLevel < 1)
+            {
+                _currentLevel = CalculateLevel();
+            }
+            return _currentLevel;
+        }
+
+        public int CalculateLevel()
+        {
             Experience experience = GetComponent<Experience>();
             if(experience == null) { return _startingLevel; }
 

@@ -801,6 +801,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 505037296777153486, guid: d449e560f69f35042a73bc3a5b97ee97,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 505037296777153486, guid: d449e560f69f35042a73bc3a5b97ee97,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 505037296777153490, guid: d449e560f69f35042a73bc3a5b97ee97,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -856,16 +866,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 505037296777153486, guid: d449e560f69f35042a73bc3a5b97ee97,
-        type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 505037296777153486, guid: d449e560f69f35042a73bc3a5b97ee97,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 5100718663288458851, guid: d449e560f69f35042a73bc3a5b97ee97,
         type: 3}
       propertyPath: _weaponDamage
@@ -910,6 +910,11 @@ PrefabInstance:
       propertyPath: _leftHandTransform
       value: 
       objectReference: {fileID: 4787437551134221369}
+    - target: {fileID: 5972118491542296191, guid: d449e560f69f35042a73bc3a5b97ee97,
+        type: 3}
+      propertyPath: uniqueIdentifier
+      value: player
+      objectReference: {fileID: 0}
     - target: {fileID: 6783359638715887062, guid: d449e560f69f35042a73bc3a5b97ee97,
         type: 3}
       propertyPath: _healthPoints
@@ -918,11 +923,6 @@ PrefabInstance:
     - target: {fileID: 1978505967, guid: d449e560f69f35042a73bc3a5b97ee97, type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5972118491542296191, guid: d449e560f69f35042a73bc3a5b97ee97,
-        type: 3}
-      propertyPath: uniqueIdentifier
-      value: player
       objectReference: {fileID: 0}
     - target: {fileID: 3513026468416307657, guid: d449e560f69f35042a73bc3a5b97ee97,
         type: 3}
@@ -934,6 +934,12 @@ PrefabInstance:
       propertyPath: _startingLevel
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3513026468416307657, guid: d449e560f69f35042a73bc3a5b97ee97,
+        type: 3}
+      propertyPath: _levelUpParticelEffect
+      value: 
+      objectReference: {fileID: 942272722671481987, guid: 7d43a4921ccc9dd4db096f195a5b4d90,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d449e560f69f35042a73bc3a5b97ee97, type: 3}
 --- !u!4 &5992033498290494376 stripped
