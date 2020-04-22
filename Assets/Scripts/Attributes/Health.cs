@@ -6,7 +6,7 @@ using System;
 using GameDevTV.Utils;
 using UnityEngine.Events;
 
-namespace RPG.Resources
+namespace RPG.Attributes
 {
     public class Health : MonoBehaviour, ISaveable
     {
@@ -78,6 +78,11 @@ namespace RPG.Resources
         public float GetPercentage()
         {
             return 100f * _healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health);
+        }
+
+        public float GetFraction()
+        {
+            return _healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
         private void AwardExperience(GameObject instigator)

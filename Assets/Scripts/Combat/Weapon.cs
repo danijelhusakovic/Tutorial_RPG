@@ -1,5 +1,5 @@
 using UnityEngine;
-using RPG.Resources;
+using RPG.Attributes;
 
 namespace RPG.Combat
 {
