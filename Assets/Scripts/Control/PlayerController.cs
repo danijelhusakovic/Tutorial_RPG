@@ -3,20 +3,13 @@ using RPG.Movement;
 using RPG.Combat;
 using RPG.Resources;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
     {
         private Health _health;
-
-        public enum CursorType
-        {
-            None,
-            Move,
-            Attack,
-            Pickup
-        }
 
         [System.Serializable]
         struct CursorMapping
@@ -36,38 +29,63 @@ namespace RPG.Control
 
         private void Update()
         {
-            if (_health.IsDead()) return;
+            if(InteractWithUI()) return;
 
-            if(InteractWithCombat()) return;
+            if (_health.IsDead())
+            {
+                SetCursor(CursorType.None);
+                return;
+            } 
+
+            if(InteractWithComponent()) return;
             if(InteractWithMovement()) return;
 
             SetCursor(CursorType.None);
         }
 
-        private bool InteractWithCombat()
+        private bool InteractWithComponent()
         {
-            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
-            foreach(RaycastHit hit in hits)
+            RaycastHit[] hits = RaycastAllSorted();
+            foreach (RaycastHit hit in hits)
             {
-                CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-                if(target == null) continue;
-
-                if(!GetComponent<Fighter>().CanAttack(target.gameObject))
+                IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
+                foreach (IRaycastable raycastable in raycastables)
                 {
-                    continue;
+                    if(raycastable.HandleRaycast(this))
+                    {
+                        SetCursor(raycastable.GetCursorType());
+                        return true;
+                    }
                 }
-
-                if(Input.GetMouseButton(0))
-                {
-                    GetComponent<Fighter>().Attack(target.gameObject);
-                }
-
-                SetCursor(CursorType.Attack);
-                return true;
             }
+
             return false;
         }
 
+        RaycastHit[] RaycastAllSorted()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+
+            float[] distances = new float[hits.Length];
+            for (int i = 0; i < distances.Length; i++)
+            {
+                distances[i] = hits[i].distance;
+            }
+
+            Array.Sort(distances, hits);
+
+
+            return hits;
+        }
+
+        private bool InteractWithUI()
+        {
+            bool isOverUI = EventSystem.current.IsPointerOverGameObject(); // It says GameObject, but it refers only to the UI.
+            
+            if(isOverUI) {SetCursor(CursorType.UI);}
+
+            return isOverUI;
+        }
 
         private bool InteractWithMovement()
         {
