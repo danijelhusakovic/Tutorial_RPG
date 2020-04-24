@@ -15,28 +15,23 @@ namespace RPG.Combat
 
         [SerializeField] private Transform _rightHandTransform = null;
         [SerializeField] private Transform _leftHandTransform = null;
-        [SerializeField] private Weapon _defaultWeapon = null;
+        [SerializeField] private WeaponConfig _defaultWeapon = null;
 
         private Health _target;
         private float _timeSinceLastAttack = Mathf.Infinity;
+        WeaponConfig _currentWeaponConfig;
         private LazyValue<Weapon> _currentWeapon;
 
         private void Awake() 
         {
+            _currentWeaponConfig = _defaultWeapon;
             _currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);
-        }
-
-        private Weapon SetupDefaultWeapon()
-        {
-            AttachWeapon(_defaultWeapon);
-            return _defaultWeapon;
         }
 
         private void Start() 
         {
             _currentWeapon.ForceInit();
         }
-
 
         private void Update()
         {
@@ -55,16 +50,21 @@ namespace RPG.Combat
             }
         }
 
-        public void EquipWeapon(Weapon weapon)
+        private Weapon SetupDefaultWeapon()
         {
-            _currentWeapon.value = weapon;
-            AttachWeapon(weapon);
+            return AttachWeapon(_defaultWeapon);
         }
 
-        private void AttachWeapon(Weapon weapon)
+        public void EquipWeapon(WeaponConfig weapon)
+        {
+            _currentWeaponConfig = weapon;
+            _currentWeapon.value = AttachWeapon(weapon);
+        }
+
+        private Weapon AttachWeapon(WeaponConfig weapon)
         {
             Animator animator = GetComponent<Animator>();
-            weapon.Spawn(_rightHandTransform, _leftHandTransform, animator);
+            return weapon.Spawn(_rightHandTransform, _leftHandTransform, animator);
         }
 
         public Health GetTarget()
@@ -96,9 +96,14 @@ namespace RPG.Combat
 
             float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
 
-            if(_currentWeapon.value.HasProjectile())
+            if(_currentWeapon.value != null)
             {
-                _currentWeapon.value.LaunchProjectile(_rightHandTransform, _leftHandTransform, _target, gameObject, damage);
+                _currentWeapon.value.OnHit();
+            }
+
+            if(_currentWeaponConfig.HasProjectile())
+            {
+                _currentWeaponConfig.LaunchProjectile(_rightHandTransform, _leftHandTransform, _target, gameObject, damage);
             }
             else
             {
@@ -113,7 +118,7 @@ namespace RPG.Combat
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, _target.transform.position) < _currentWeapon.value.GetRange();
+            return Vector3.Distance(transform.position, _target.transform.position) < _currentWeaponConfig.GetRange();
         }
 
         public bool CanAttack(GameObject combatTarget)
@@ -146,7 +151,7 @@ namespace RPG.Combat
         {
             if(stat == Stat.Damage)
             {
-                yield return _currentWeapon.value.GetDamage();
+                yield return _currentWeaponConfig.GetDamage();
             }
         }
 
@@ -154,20 +159,20 @@ namespace RPG.Combat
         {
             if (stat == Stat.Damage)
             {
-                yield return _currentWeapon.value.GetPercentageBonus();
+                yield return _currentWeaponConfig.GetPercentageBonus();
             }
         }
 
         public object CaptureState()
         {
             // if _currentWeapon is null, that's an error. In that casse it should always be Unarmed.
-            return _currentWeapon.value.name;
+            return _currentWeaponConfig.name;
         }
 
         public void RestoreState(object state)
         {
             string weaponName = (string)state;
-            Weapon weapon = UnityEngine.Resources.Load<Weapon>(weaponName);
+            WeaponConfig weapon = UnityEngine.Resources.Load<WeaponConfig>(weaponName);
             EquipWeapon(weapon);
         }
     }
