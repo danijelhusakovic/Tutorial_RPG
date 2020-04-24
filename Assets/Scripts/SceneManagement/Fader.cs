@@ -7,6 +7,8 @@ namespace RPG.SceneManagement
     {
         private CanvasGroup _canvasGroup;
 
+        private Coroutine _currentlyActiveFade = null;
+
         private void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
@@ -17,22 +19,32 @@ namespace RPG.SceneManagement
             _canvasGroup.alpha = 1f;
         }
 
-        public IEnumerator FadeOut(float duration)
+        public Coroutine FadeOut(float duration)
         {
-            while(_canvasGroup.alpha < 1f)
+            return Fade(1f, duration);
+        }
+
+        public Coroutine FadeIn(float duration)
+        {
+            return Fade(0f, duration);
+        }
+
+        public Coroutine Fade(float target, float duration)
+        {
+            if (_currentlyActiveFade != null) { StopCoroutine(_currentlyActiveFade); }
+
+            _currentlyActiveFade = StartCoroutine(FadeRoutine(target, duration));
+            return _currentlyActiveFade;
+        } 
+
+        private IEnumerator FadeRoutine(float target, float duration)
+        {
+            while (!Mathf.Approximately(_canvasGroup.alpha, target))
             {
-                _canvasGroup.alpha += Time.deltaTime / duration;
+                _canvasGroup.alpha = Mathf.MoveTowards(_canvasGroup.alpha, target, Time.deltaTime / duration);
                 yield return null;  // Wait for one frame
             }
         }
 
-        public IEnumerator FadeIn(float duration)
-        {
-            while (_canvasGroup.alpha > 0f)
-            {
-                _canvasGroup.alpha -= Time.deltaTime / duration;
-                yield return null;  // Wait for one frame
-            }
-        }
     }
 }

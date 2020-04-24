@@ -678,21 +678,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2725897792572294773, guid: 5d43a42385015d745ba1b922ddd67084,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2725897792572294773, guid: 5d43a42385015d745ba1b922ddd67084,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2725897792572294773, guid: 5d43a42385015d745ba1b922ddd67084,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8571387075632000547, guid: 5d43a42385015d745ba1b922ddd67084,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -708,6 +693,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2.6943552
       objectReference: {fileID: 0}
+    - target: {fileID: 2725897792572294773, guid: 5d43a42385015d745ba1b922ddd67084,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725897792572294773, guid: 5d43a42385015d745ba1b922ddd67084,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725897792572294773, guid: 5d43a42385015d745ba1b922ddd67084,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8571387075265240112, guid: 5d43a42385015d745ba1b922ddd67084,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -722,6 +722,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.6943552
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624058350149968894, guid: 5d43a42385015d745ba1b922ddd67084,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8571387075374225977, guid: 5d43a42385015d745ba1b922ddd67084,
         type: 3}
