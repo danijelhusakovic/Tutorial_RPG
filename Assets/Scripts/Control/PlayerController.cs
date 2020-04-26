@@ -11,6 +11,8 @@ namespace RPG.Control
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float _maxNavMeshProjectionDistance = 1f;
+        [SerializeField] private CursorMapping[] _cursorMappings = null;
+        [SerializeField] private float _raycastRadius = 1f;
 
         private Health _health;
 
@@ -21,8 +23,6 @@ namespace RPG.Control
             public Vector2 Hotspot;
             public Texture2D Texture;
         }
-
-        [SerializeField] private CursorMapping[] _cursorMappings = null;
 
 
         private void Awake() 
@@ -118,7 +118,7 @@ namespace RPG.Control
         
         RaycastHit[] RaycastAllSorted()
         {
-            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            RaycastHit[] hits = Physics.SphereCastAll(GetMouseRay(), _raycastRadius);
 
             float[] distances = new float[hits.Length];
             for (int i = 0; i < distances.Length; i++)

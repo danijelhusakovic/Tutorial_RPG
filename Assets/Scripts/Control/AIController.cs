@@ -18,6 +18,7 @@ namespace RPG.Control
         [SerializeField] private float _waypointDwellTime = 3f;
         [Range(0f, 1f)]
         [SerializeField] private float _patrolSpeedFraction = 0.2f;
+        [SerializeField] private float _shoutDistance = 5f;
 
         private GameObject _player;
         private Fighter _fighter;
@@ -128,6 +129,20 @@ namespace RPG.Control
         {
             _timeSinceLastSawPlayer = 0f;
             _fighter.Attack(_player);
+
+            AggravateNearbyEnemies();
+        }
+
+        private void AggravateNearbyEnemies()
+        {
+            RaycastHit[] hits = Physics.SphereCastAll(transform.position, _shoutDistance, Vector3.up, 0f); //for Vector3.up any vector would do, since we're not actually casting the sphere.
+            foreach (RaycastHit hit in hits)
+            {
+                AIController ai = hit.collider.GetComponent<AIController>();
+                if(ai == null) { continue; }
+
+                ai.Aggravate();
+            }
         }
 
         private bool IsAggravated()
