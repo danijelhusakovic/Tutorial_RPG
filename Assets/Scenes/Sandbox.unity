@@ -1043,6 +1043,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8024899202640294026, guid: 26e160f2854103b46ab1f2d6bc3fc7e3,
+        type: 3}
+      propertyPath: _defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: ab7e2c5939509504790513846384664b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26e160f2854103b46ab1f2d6bc3fc7e3, type: 3}
 --- !u!114 &308906408 stripped
@@ -2287,6 +2293,12 @@ PrefabInstance:
       propertyPath: _weaponDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 166081655053283571, guid: 20e499dac0ba5e5448b93da515c95ec1,
+        type: 3}
+      propertyPath: _defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: ab7e2c5939509504790513846384664b,
+        type: 2}
     - target: {fileID: 930065653535421076, guid: 20e499dac0ba5e5448b93da515c95ec1,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -2447,6 +2459,12 @@ PrefabInstance:
       propertyPath: _weaponDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 166081655053283571, guid: 20e499dac0ba5e5448b93da515c95ec1,
+        type: 3}
+      propertyPath: _defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: ab7e2c5939509504790513846384664b,
+        type: 2}
     - target: {fileID: 930065653535421076, guid: 20e499dac0ba5e5448b93da515c95ec1,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -4084,7 +4102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1189144861
 Transform:
   m_ObjectHideFlags: 0
@@ -4527,7 +4545,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1348443993}
-  m_LocalRotation: {x: 0.027208906, y: -0.64815784, z: 0.023184663, w: 0.76066655}
+  m_LocalRotation: {x: 0.02720891, y: -0.6481579, z: 0.02318467, w: 0.76066655}
   m_LocalPosition: {x: 9.02, y: 3.07, z: -26.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
